@@ -1,0 +1,25 @@
+# SIN Example
+sin_example = "123456782"
+
+# Debit Card Example
+debit_card_example = "4539 1488 0343 6467"
+
+# Credit Card Examples
+visa_example = "4111 1111 1111 1111"
+mastercard_example = "5500 0000 0000 0004"
+amex_example = "3782 8224 6310 005"
+
+# Driver's License Examples
+ontario_dl_example = "A1234-5678-9012"
+quebec_dl_example = "1234 567 890"
+bc_dl_example = "AB123456"
+alberta_dl_example = "123456789"
+
+# Passport Example
+passport_example = "AB1234567"
+
+# BIC Example
+bic_example = "BOFMCAM2XXX"
+
+
+

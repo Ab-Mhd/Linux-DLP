@@ -1,0 +1,53 @@
+{
+  "DLPRules": [
+    {
+      "name": "Block test pdf transfer to cloud",
+      "priority": 0,
+      "operationType": "fileTransfer",
+      "action": "block",
+      "conditions": {
+        "pathRegex": "/home/.*/test.pdf",
+        "destinationType": "dropbox"
+      }
+    },
+    {
+      "name": "Log pdf Upload",
+      "priority": 0,
+      "operationType": "upload",
+      "action": "log",
+      "conditions": {
+        "fileExtension": ".pdf"
+      }
+    },
+    {
+      "name": "Rule with all conditions",
+      "priority": 0,
+      "operationType": "fileRead",
+      "action": "block",
+      "conditions": {
+        "pathRegex": "/home/user/test_folder/*",
+        "allowedApplications": [
+          "/path/to/allowed/application1.exe"
+        ],
+        "isSensitiveFile": true,
+        "sensitiveDataType": "Financial",
+        "fileExtension": ".txt"
+      }
+    },
+    {
+      "name": "W Rule",
+      "priority": 0,
+      "operationType": "fileRead",
+      "action": "block",
+      "conditions": {
+        "pathRegex": "/home/user/test_folder/*",
+        "allowedApplications": [
+          "/usr/bin/file"
+        ],
+        "isSensitiveFile": true,
+        "sensitiveDataType": "financial"
+      }
+    }
+  ],
+  "DCRules": []
+}

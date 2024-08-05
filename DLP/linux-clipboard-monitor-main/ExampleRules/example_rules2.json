@@ -1,0 +1,103 @@
+{
+  "rules": [
+    {
+      "rule_id": "1",
+      "description": "Block copying of credit card numbers",
+      "priority": 1,
+      "enabled": true,
+      "conditions": {
+        "data_type": "all",
+        "context": "all"
+      },
+      "actions": [
+        {
+          "type": "quarantine",
+          "message": "Copying credit card numbers is not allowed."
+        }
+      ],
+      "exceptions": {
+        "whitelist_applications": ["/usr/bin/xed"],
+        "whitelist_users": [],
+        "time_based_exceptions": []
+      }
+    },
+    {
+      "rule_id": "2",
+      "description": "Alert on copying email addresses",
+      "priority": 2,
+      "enabled": true,
+      "conditions": {
+        "data_type": "email_address",
+        "context": "all"
+      },
+      "actions": [
+        {
+          "type": "alert",
+          "message": "Copying email addresses detected."
+        },
+        {
+          "type": "log",
+          "log_message": "Email address copied to clipboard."
+        }
+      ],
+      "exceptions": {
+        "whitelist_applications": [],
+        "whitelist_users": [],
+        "time_based_exceptions": []
+      }
+    },
+    {
+      "rule_id": "3",
+      "description": "Mask social security numbers on paste",
+      "priority": 3,
+      "enabled": true,
+      "conditions": {
+        "data_type": "social_security_number",
+        "context": "paste"
+      },
+      "actions": [
+        {
+          "type": "mask",
+          "mask_character": "*",
+          "mask_format": "XXX-XX-####"
+        },
+        {
+          "type": "log",
+          "log_message": "Social security number masked on paste."
+        }
+      ],
+      "exceptions": {
+        "whitelist_applications": ["trusted_app"],
+        "whitelist_users": ["admin", "hr"],
+        "time_based_exceptions": []
+      }
+    },
+    {
+      "rule_id": "4",
+      "description": "Quarantine confidential project codes",
+      "priority": 4,
+      "enabled": true,
+      "conditions": {
+        "data_type": "regex",
+        "pattern": "CONF-[0-9]{4}-[A-Z]{3}",
+        "context": "all"
+      },
+      "actions": [
+        {
+          "type": "quarantine",
+          "quarantine_location": "/secure/quarantine",
+          "message": "Confidential project code detected and quarantined."
+        },
+        {
+          "type": "log",
+          "log_message": "Confidential project code copied."
+        }
+      ],
+      "exceptions": {
+        "whitelist_applications": [],
+        "whitelist_users": ["project_manager"],
+        "time_based_exceptions": []
+      }
+    }
+  ]
+}

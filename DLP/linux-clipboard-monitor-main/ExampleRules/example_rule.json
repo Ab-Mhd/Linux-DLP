@@ -1,0 +1,22 @@
+{
+    "rule_id": "1",
+    "description": "Block copying of credit card numbers",
+    "priority": 1,
+    "enabled": true,
+    "conditions": {
+      "data_type": "credit_card",
+      "context": "all"
+    },
+    "actions": [
+      {
+        "type": "block",
+        "message": "Copying credit card numbers is not allowed."
+      }
+    ],
+    "exceptions": {
+      "whitelist_applications": ["safe_app"],
+      "whitelist_users": ["admin"],
+      "time_based_exceptions": []
+    }
+}
+  
