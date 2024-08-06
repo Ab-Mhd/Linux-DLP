@@ -24,7 +24,7 @@ fi
 
 # Run the DLP build script
 echo "Running DLP build script"
-fanotify_dlp-main/build_main.sh
+sudo bash fanotify_dlp-main/build_main.sh
 
 if [ $? -eq 0 ]; then
     echo "DLP build completed successfully."
@@ -35,7 +35,7 @@ fi
 
 # Start the DLP process
 echo "Starting DLP"
-./fanotify_dlp-main/main.out fanotify_dlp-main/rule.json fanotify_dlp-main/test_data/sample.txt
+sudo ./fanotify_dlp-main/main.out fanotify_dlp-main/rule.json fanotify_dlp-main/test_data/sample.txt
 
 if [ $? -eq 0 ]; then
     echo "DLP process started successfully."
